@@ -1,0 +1,14 @@
+global using WFAI.Domain.Entities;
+global using WFAI.Domain.Interfaces;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using System.ComponentModel.DataAnnotations;
+global using Microsoft.AspNetCore.Identity;
+global using WFAI.Infrastructure.Identity.Constants;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.Extensions.Configuration;
+global using WFAI.Infrastructure.Persistence.Contexts;
+global using WFAI.Infrastructure.Identity.Models;
+global using WFAI.Application.Interfaces;
+global using System.Data;
+global using System.Security.Claims;

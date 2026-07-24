@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="WFAI.API.Tests/WFAI.API.Tests.csproj" />
+  <Project Path="WFAI.API/WFAI.API.csproj" />
+  <Project Path="WFAI.Application.Tests/WFAI.Application.Tests.csproj" />
+  <Project Path="WFAI.Application/WFAI.Application.csproj" />
+  <Project Path="WFAI.Domain.Tests/WFAI.Domain.Tests.csproj" />
+  <Project Path="WFAI.Domain/WFAI.Domain.csproj" />
+  <Project Path="WFAI.Infrastructure.Tests/WFAI.Infrastructure.Tests.csproj" />
+  <Project Path="WFAI.Infrastructure/WFAI.Infrastructure.csproj" />
+</Solution>

@@ -1,0 +1,6 @@
+@UMS.API_HostAddress = http://localhost:5037
+
+GET {{UMS.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
