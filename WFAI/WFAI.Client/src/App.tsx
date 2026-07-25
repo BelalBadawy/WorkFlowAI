@@ -22,6 +22,7 @@ import './App.css'
 const UsersManagement = lazy(() => import('./pages/UsersManagement'))
 const RoleManagement = lazy(() => import('./pages/RoleManagement'))
 const CategoriesManagement = lazy(() => import('./pages/CategoriesManagement'))
+const PhasesManagement = lazy(() => import('./pages/PhasesManagement'))
 const AuditLogsManagement = lazy(() => import('./pages/AuditLogsManagement'))
 
 const queryClient = new QueryClient({
@@ -95,6 +96,14 @@ function AppContent() {
             <Route path="/admin/categories" element={
               <Suspense fallback={<div className="p-8 text-center text-neutral-400">Loading...</div>}>
                 <CategoriesManagement />
+              </Suspense>
+            } />
+          </Route>
+
+          <Route element={<ProtectedRoute allowedPermissions={['Permission.Product.Phases.Read']} />}>
+            <Route path="/admin/phases" element={
+              <Suspense fallback={<div className="p-8 text-center text-neutral-400">Loading...</div>}>
+                <PhasesManagement />
               </Suspense>
             } />
           </Route>

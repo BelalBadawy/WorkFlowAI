@@ -53,6 +53,7 @@ namespace WFAI.Infrastructure
                 .AddScoped<IFileStorageService, LocalFileStorageService>()
                 .AddScoped<IAuditTrailExportService, AuditTrailExportService>()
                 .AddScoped<ICategoryExportService, CategoryExportService>()
+                .AddScoped<IPhaseExportService, PhaseExportService>()
                 .AddFeatures();
         }
 

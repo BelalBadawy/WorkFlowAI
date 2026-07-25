@@ -43,6 +43,7 @@ namespace WFAI.Infrastructure.Persistence.Contexts
         }
 
         public DbSet<Category> Categories => Set<Category>();
+        public DbSet<Phase> Phases => Set<Phase>();
         public DbSet<AuditTrail> AuditTrails => Set<AuditTrail>();
         public DbSet<LogUserActivity> LogUserActivities => Set<LogUserActivity>();
         public DbSet<OutboxMessage> OutboxMessages => Set<OutboxMessage>();

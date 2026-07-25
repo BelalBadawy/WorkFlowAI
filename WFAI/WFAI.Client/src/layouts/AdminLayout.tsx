@@ -54,6 +54,12 @@ export default function AdminLayout() {
       icon: <BookOpen className="w-4 h-4 mr-2" />
     },
     {
+      label: 'Phases Management',
+      path: '/admin/phases',
+      permission: 'Permission.Product.Phases.Read',
+      icon: <BookOpen className="w-4 h-4 mr-2" />
+    },
+    {
       label: 'Audit Logs',
       path: '/admin/audit-logs',
       permission: 'Permission.Identity.AuditTrails.Read',

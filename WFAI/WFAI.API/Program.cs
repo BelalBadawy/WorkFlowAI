@@ -74,6 +74,7 @@ app.UseCors("AllowedOrigins");
 await app.UseInfrastructureAsync();
 app.MapAccountEndpoints();
 app.MapCategoryEndpoints();
+app.MapPhaseEndpoints();
 app.MapRoleEndpoints();
 app.MapUserEndpoints();
 app.MapAuditTrailEndpoints();

@@ -23,6 +23,7 @@ namespace WFAI.Application.Authorization
         public const string Menus = nameof(Menus);
         public const string Categories = nameof(Categories);
         public const string AuditTrails = nameof(AuditTrails);
+        public const string Phases = nameof(Phases);
     }
 
     public static class AppService
@@ -62,6 +63,10 @@ namespace WFAI.Application.Authorization
             new(AppService.Product, AppFeature.Categories, AppAction.Read, "Read Categories", IsBasic: true),
             new(AppService.Product, AppFeature.Categories, AppAction.Update, "Update Categories"),
             new(AppService.Product, AppFeature.Categories, AppAction.Delete, "Delete Categories"),
+            new(AppService.Product, AppFeature.Phases, AppAction.Create, "Create Phases"),
+            new(AppService.Product, AppFeature.Phases, AppAction.Read, "Read Phases", IsBasic: true),
+            new(AppService.Product, AppFeature.Phases, AppAction.Update, "Update Phases"),
+            new(AppService.Product, AppFeature.Phases, AppAction.Delete, "Delete Phases"),
             new(AppService.Identity, AppFeature.Users, AppAction.Lock,        "Lock Users"),
             new(AppService.Identity, AppFeature.Users, AppAction.Unlock,      "Unlock Users"),
             new(AppService.Identity, AppFeature.Users, AppAction.ChangeEmail, "Change User Email", IsBasic: true),

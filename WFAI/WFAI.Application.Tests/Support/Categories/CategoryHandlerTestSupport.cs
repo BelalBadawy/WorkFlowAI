@@ -52,6 +52,7 @@ internal sealed class CategoryHandlerTestDbContext : DbContext, IApplicationDbCo
     public bool ThrowConcurrencyOnSave { get; set; }
 
     public DbSet<Category> Categories => Set<Category>();
+    public DbSet<Phase> Phases => Set<Phase>();
     public DbSet<AuditTrail> AuditTrails => Set<AuditTrail>();
     public DbSet<LogUserActivity> LogUserActivities => Set<LogUserActivity>();
     public DbSet<OutboxMessage> OutboxMessages => Set<OutboxMessage>();
@@ -67,6 +68,16 @@ internal sealed class CategoryHandlerTestDbContext : DbContext, IApplicationDbCo
         {
             ThrowConcurrencyOnSave = false;
             throw new DbUpdateConcurrencyException();
+        }
+
+        foreach (var entry in ChangeTracker.Entries<ISoftDelete>())
+        {
+            if (entry.State == EntityState.Deleted)
+            {
+                entry.State = EntityState.Modified;
+                entry.Entity.SoftDeleted = true;
+                entry.Entity.DeletedAt = DateTime.UtcNow;
+            }
         }
 
         return base.SaveChangesAsync(cancellationToken);
@@ -114,6 +125,18 @@ internal sealed class CategoryHandlerTestDbContext : DbContext, IApplicationDbCo
                 .WithMany(x => x.Children)
                 .HasForeignKey(x => x.ParentId)
                 .OnDelete(DeleteBehavior.NoAction);
+            builder.HasQueryFilter(x => !x.SoftDeleted);
+        });
+
+        modelBuilder.Entity<Phase>(builder =>
+        {
+            builder.ToTable("Phases");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+            builder.Property(x => x.Title).IsRequired().HasMaxLength(150);
+            builder.Property(x => x.NormalizedTitle).IsRequired().HasMaxLength(256);
+            builder.Property(x => x.RowVersion).IsConcurrencyToken();
+            builder.HasIndex(x => x.NormalizedTitle).HasFilter("SoftDeleted = 0").IsUnique().HasDatabaseName("UX_Phases_NormalizedTitle");
             builder.HasQueryFilter(x => !x.SoftDeleted);
         });
 

@@ -12,6 +12,7 @@ namespace WFAI.Application.Interfaces.Common
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
         DbSet<Category> Categories { get; }
+        DbSet<Phase> Phases { get; }
         DbSet<AuditTrail> AuditTrails { get; }
         DbSet<LogUserActivity> LogUserActivities { get; }
         DbSet<OutboxMessage> OutboxMessages { get; }

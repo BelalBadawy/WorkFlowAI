@@ -21,17 +21,18 @@ export function StatusConfirmationDialog({
   action,
   isLoading = false,
 }: StatusConfirmationDialogProps) {
-  const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
+  const capitalize = (str?: string) => (str ? str.charAt(0).toUpperCase() + str.slice(1) : '');
   const actionText = capitalize(action);
   const entityTypeText = capitalize(entityType);
 
   const getConsequenceText = () => {
-    if (entityType.toLowerCase() === 'user') {
+    const typeLower = (entityType || '').toLowerCase();
+    if (typeLower === 'user') {
       return action === 'deactivate' 
         ? "They will no longer be able to perform operations."
         : "";
     }
-    if (entityType.toLowerCase() === 'category') {
+    if (typeLower === 'category') {
       return action === 'deactivate'
         ? "Products mapped to this category may hide or lose visibility in catalogs."
         : "It will become visible in product catalogs.";
